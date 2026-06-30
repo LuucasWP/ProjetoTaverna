@@ -17,7 +17,7 @@ class Program
         List<double> precos = new List<double> { 15.00, 32.50, 20.00, 18.00, 12.50 };
         List<int> estoque = new List<int> { 40, 15, 10, 25, 8 };
 
-        int menu = 0;
+        int menu = -1;
         do
         {
             Console.WriteLine("Selecione a operação desejada:");
@@ -29,7 +29,14 @@ class Program
             Console.WriteLine("6) - Emissão de Recibo");
             Console.WriteLine("7) - Relatório de Caixa Geral");
             Console.WriteLine("0) - Sair");
-            menu = int.TryParse(Console.ReadLine(), out int opcao) ? opcao : 0;
+            bool flag = int.TryParse(Console.ReadLine(), out menu);
+            if (!flag)
+            {
+                Console.WriteLine("Operação invalida");
+                menu = -1;
+                Console.ReadKey();
+                Console.Clear();
+            }
             switch (menu)
             {
                 case 1:
@@ -64,7 +71,7 @@ class Program
     {
         Console.Clear();
         Console.WriteLine("Informe o codigo do item a ser consultado: ");
-        int codigoInformado = int.TryParse(Console.ReadLine(), out int opcao) ? opcao : 0;
+        int.TryParse(Console.ReadLine(), out int codigoInformado);
         while (codigoInformado <= 0 || codigoInformado > 5)
         {
             Console.WriteLine("Código invalido");
@@ -83,7 +90,7 @@ class Program
     {
         Console.Clear();
         Console.WriteLine("Informe o codigo do item a ser adicionado estoque: ");
-        int codigoInformado = int.TryParse(Console.ReadLine(), out int opcao) ? opcao : 0;
+        int.TryParse(Console.ReadLine(), out int codigoInformado);
         while (codigoInformado <= 0 || codigoInformado > 5)
         {
             Console.WriteLine("Código invalido");
@@ -93,7 +100,7 @@ class Program
 
         int idItem = codigos.FindIndex(x => x == codigoInformado);
         Console.WriteLine("Informe a quantidade a ser adicionada ao estoque");
-        int qtdAdicionada = int.TryParse(Console.ReadLine(), out int opcao2) ? opcao2 : 0;
+        int.TryParse(Console.ReadLine(), out int qtdAdicionada);
         if (qtdAdicionada < 0)
         {
             Console.WriteLine("Não é possivel ter estoque negativo");
@@ -102,6 +109,8 @@ class Program
         }
 
         estoque[idItem] += qtdAdicionada;
-        Console.WriteLine(estoque[idItem]);
+        Console.WriteLine($"Adicionado com sucesso {qtdAdicionada} itens ao estoque.");
+        Console.WriteLine($"O estoque agora possui {estoque[idItem]} itens");
+        Console.ReadKey();
     }
 }
