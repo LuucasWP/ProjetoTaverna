@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ProjetoTaverna")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+27cbb89dda6f80f5d203ddd7b27c5c7b6a959c6f")]
 [assembly: System.Reflection.AssemblyProductAttribute("ProjetoTaverna")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ProjetoTaverna")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
