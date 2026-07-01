@@ -37,6 +37,7 @@ class Program
                 Console.ReadKey();
                 Console.Clear();
             }
+
             switch (menu)
             {
                 case 1:
@@ -95,17 +96,23 @@ class Program
         {
             Console.WriteLine("Código invalido");
             Console.Write("Informe o código novamente: ");
-            codigoInformado = int.TryParse(Console.ReadLine(), out int opcao1) ? opcao1 : 0;
+            int.TryParse(Console.ReadLine(), out codigoInformado);
         }
 
         int idItem = codigos.FindIndex(x => x == codigoInformado);
         Console.WriteLine("Informe a quantidade a ser adicionada ao estoque");
-        int.TryParse(Console.ReadLine(), out int qtdAdicionada);
+        bool flag = int.TryParse(Console.ReadLine(), out int qtdAdicionada);
+        while (!flag)
+        {
+            Console.WriteLine("Informe um valor valido");
+            flag = int.TryParse(Console.ReadLine(), out qtdAdicionada);
+        }
+
         if (qtdAdicionada < 0)
         {
             Console.WriteLine("Não é possivel ter estoque negativo");
             Console.Write("Informe o quantidade novamente: ");
-            qtdAdicionada = int.TryParse(Console.ReadLine(), out int opcao1) ? opcao1 : 0;
+            int.TryParse(Console.ReadLine(), out qtdAdicionada);
         }
 
         estoque[idItem] += qtdAdicionada;
